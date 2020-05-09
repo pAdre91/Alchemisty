@@ -1,5 +1,7 @@
-﻿interface IProgressManager
+﻿using System.Collections.Generic;
+
+interface IProgressManager
 {
 	void SaveProgress();
-	void LoadProgress();
+	Data LoadProgress();
 }
