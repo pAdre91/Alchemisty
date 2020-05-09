@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-interface IGameData
+﻿public interface IGameData
 {
-	Dictionary<string, bool> Elements { get; set; }
+	Data Elements { get; set; }
 }

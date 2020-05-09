@@ -7,4 +7,11 @@ public class GameController : MonoBehaviour
 	ILocalizationManager localizationManager;
 	IProgressManager progressManager;
 	IGameData gameData;
+
+	private void Start()
+	{
+		progressManager = new ProgressManager();
+
+		progressManager.LoadProgress();
+	}
 }
