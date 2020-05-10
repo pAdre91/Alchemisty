@@ -2,15 +2,15 @@
 
 public class ProgressManager : IProgressManager
 {
-	private IReader<Data> elementsReader = new JsonReader<Data>();
-
 	public Data LoadProgress()
 	{
+		IReader<Data> elementsReader = new JsonHandler<Data>();
 		return elementsReader.Read(Constants.progressFilePath);
 	}
 
-	public void SaveProgress()
+	public void SaveProgress(Data progressData)
 	{
-		throw new System.NotImplementedException();
+		IWriter<Data> elementsWriter = new JsonHandler<Data>();
+		elementsWriter.Write(Constants.progressFilePath, progressData);
 	}
 }

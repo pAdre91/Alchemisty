@@ -64,9 +64,10 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Auxiliary\Constants.cs" />
     <Compile Include="Assets\Scripts\Auxiliary\Data.cs" />
-    <Compile Include="Assets\Scripts\Auxiliary\JsonReader.cs" />
+    <Compile Include="Assets\Scripts\Auxiliary\JsonHandler.cs" />
     <Compile Include="Assets\Scripts\Controllers\GameController.cs" />
     <Compile Include="Assets\Scripts\Controllers\LevelController.cs" />
+    <Compile Include="Assets\Scripts\Data\ProgressData.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IBookViewer.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IElementManager.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IElementViewer.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="Assets\Scripts\Interfaces\ISettingViewer.cs" />
     <Compile Include="Assets\Scripts\Interfaces\ISettingsManager.cs" />
     <Compile Include="Assets\Scripts\Interfaces\ISoundManager.cs" />
+    <Compile Include="Assets\Scripts\Interfaces\IWriter.cs" />
     <Compile Include="Assets\Scripts\Managers\ProgressManager.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/kING/Documents/Alchemisty/Alchemistry/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
