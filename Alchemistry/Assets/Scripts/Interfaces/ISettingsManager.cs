@@ -1,7 +1,8 @@
 ﻿interface ISettingsManager
 {
-	void SaveSettings();
-	void LoadSetting();
+	SettingsValue SettingsValue { get; }
 
-	int GetSettingVolume(string settingName);
+	void LoadSettings();
+	void ChangeSetting(string key, int value);
+	void ChangeSetting(string key, string value);
 }
