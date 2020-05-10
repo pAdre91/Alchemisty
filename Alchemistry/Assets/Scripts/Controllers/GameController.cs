@@ -11,7 +11,9 @@ public class GameController : MonoBehaviour
 	private void Start()
 	{
 		progressManager = new ProgressManager();
+		gameData = new ProgressData();
 
-		progressManager.LoadProgress();
+		gameData.Elements = progressManager.LoadProgress();
+		progressManager.SaveProgress(gameData.Elements);
 	}
 }
