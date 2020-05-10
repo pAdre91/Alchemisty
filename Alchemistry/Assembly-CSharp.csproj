@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\Auxiliary\Constants.cs" />
     <Compile Include="Assets\Scripts\Auxiliary\Data.cs" />
     <Compile Include="Assets\Scripts\Auxiliary\JsonHandler.cs" />
+    <Compile Include="Assets\Scripts\Auxiliary\SettingsManager.cs" />
     <Compile Include="Assets\Scripts\Controllers\GameController.cs" />
     <Compile Include="Assets\Scripts\Controllers\LevelController.cs" />
     <Compile Include="Assets\Scripts\Data\ProgressData.cs" />
