@@ -1,9 +1,1 @@
-{
-	"progress": 
-	[
-		{"name": "Wather", "open": true},
-		{"name": "Fire", "open": true},
-		{"name": "Air", "open": true},
-		{"name": "Land", "open": true}
-	]
-}
+{"progress":[{"name":"Wather","open":true},{"name":"Fire","open":true},{"name":"Air","open":true},{"name":"Land","open":true}]}
