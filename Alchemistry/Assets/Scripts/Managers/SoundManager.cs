@@ -30,7 +30,7 @@ public class SoundManager : MonoBehaviour, ISoundManager
 		DontDestroyOnLoad(gameObject);
 	}
 
-	public void PlaySound(string soundName, string soundsPath = "Sounds/")
+	public void PlaySound(string soundName, bool pausable, string soundsPath = "Sounds/")
 	{
 		if (string.IsNullOrEmpty(soundName))
 		{
@@ -57,10 +57,10 @@ public class SoundManager : MonoBehaviour, ISoundManager
 			return;
 		}
 
-		StartCoroutine(SoundPlayback(soundName, soundsPath));
+		StartCoroutine(SoundPlayback(soundName, pausable, soundsPath));
 	}
 
-	private IEnumerator SoundPlayback(string soundName, string path)
+	private IEnumerator SoundPlayback(string soundName, bool pausable, string path)
 	{
 		ResourceRequest request = Resources.LoadAsync<AudioClip>(path + soundName);
 
@@ -82,13 +82,14 @@ public class SoundManager : MonoBehaviour, ISoundManager
 
 		audioSource.mute = false;       //TODO Добавить в настройки мьют и передавать сюда
 		audioSource.volume = (float)SoundVolume/100;       //TODO ИЗменить настройку громкости на шкалу от 0 до 1
+		audioSource.ignoreListenerPause = !pausable;
 		audioSource.clip = audioClip;
 		audioSource.Play();
 
 		playableSounds.Add(audioSource);
 	}
 
-	public void PlayMusic(string musicName, string musicPath = "Music/")
+	public void PlayMusic(string musicName, bool pausable, string musicPath = "Music/")
 	{
 		if (string.IsNullOrEmpty(musicName))
 		{
@@ -103,10 +104,10 @@ public class SoundManager : MonoBehaviour, ISoundManager
 		}
 
 		StopMusicInternal();
-		StartCoroutine(MusicPlayback(musicName, musicPath));
+		StartCoroutine(MusicPlayback(musicName, pausable, musicPath));
 	}
 
-	private IEnumerator MusicPlayback(string musicName, string path)
+	private IEnumerator MusicPlayback(string musicName, bool pausable, string path)
 	{
 		ResourceRequest request = Resources.LoadAsync<AudioClip>(path + musicName);
 
@@ -129,6 +130,7 @@ public class SoundManager : MonoBehaviour, ISoundManager
 		musicSource.mute = false;       //TODO Добавить в настройки мьют и передавать сюда
 		musicSource.volume = (float)MusicVolume / 100;       //TODO ИЗменить настройку громкости на шкалу от 0 до 1
 		musicSource.clip = musicClip;
+		musicSource.ignoreListenerPause = !pausable;
 		musicSource.loop = true;
 		musicSource.Play();
 
@@ -139,5 +141,15 @@ public class SoundManager : MonoBehaviour, ISoundManager
 	{
 		if (currentMusic != null)
 			currentMusic.Stop();
+	}
+
+	public void Pause()
+	{
+		AudioListener.pause = true;
+	}
+
+	public void UnPause()
+	{
+		AudioListener.pause = false;
 	}
 }
