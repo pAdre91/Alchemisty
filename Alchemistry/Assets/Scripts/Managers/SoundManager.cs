@@ -11,8 +11,34 @@ public class SoundManager : MonoBehaviour, ISoundManager
 	private List<AudioSource> playableSounds = new List<AudioSource>();
 	private AudioSource currentMusic = new AudioSource();
 
-	public int SoundVolume { get; set; } = Constants.defaultSoundVolume;
-	public int MusicVolume { get; set; } = Constants.defaultMusicVolume;
+	private int soundVolume = Constants.defaultSoundVolume;
+	private int musicVolume = Constants.defaultMusicVolume;
+
+	public int SoundVolume
+	{
+		private get
+		{
+			return soundVolume;
+		}
+		set
+		{
+			soundVolume = value;
+			ChangeSoundsVolume();
+		}
+	}
+
+	public int MusicVolume
+	{
+		private get
+		{
+			return musicVolume;
+		}
+		set
+		{
+			musicVolume = value;
+			ChangeMusicVolume();
+		}
+	}
 
 	public static SoundManager Instance
 	{
@@ -151,5 +177,19 @@ public class SoundManager : MonoBehaviour, ISoundManager
 	public void UnPause()
 	{
 		AudioListener.pause = false;
+	}
+
+	private void ChangeSoundsVolume()
+	{
+		foreach (AudioSource audioSource in playableSounds)
+		{
+			audioSource.volume = SoundVolume;
+		}
+	}
+
+	public void ChangeMusicVolume()
+	{
+		if (currentMusic != null)
+			currentMusic.volume = MusicVolume;
 	}
 }
