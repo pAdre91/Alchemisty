@@ -30,11 +30,13 @@ public class SettingsManager : ISettingsManager
 	public void ChangeSetting(string key, int value)
 	{
 		PlayerPrefs.SetInt(key, value);
+		LoadSettings();
 	}
 
 	public void ChangeSetting(string key, string value)
 	{
 		PlayerPrefs.SetString(key, value);
+		LoadSettings();
 	}
 }
 
