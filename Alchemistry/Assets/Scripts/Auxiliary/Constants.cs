@@ -9,6 +9,9 @@ namespace Auxiliary
 		public const string defaultLocale = "En";
 		public const int defaultMusicVolume = 100;
 		public const int defaultSoundVolume = 100;
+
+		public const int maxEquelSounds = 5;
+		public const int maxPlayableSounds = 10;
 	}
 
 	static class SettingsKey

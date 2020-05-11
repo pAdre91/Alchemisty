@@ -82,6 +82,7 @@
     <Compile Include="Assets\Scripts\Interfaces\IWriter.cs" />
     <Compile Include="Assets\Scripts\Managers\ProgressManager.cs" />
     <Compile Include="Assets\Scripts\Managers\SettingsManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\SoundManager.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/kING/Documents/Alchemisty/Alchemistry/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
