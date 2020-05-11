@@ -56,6 +56,11 @@ public class SoundManager : MonoBehaviour, ISoundManager
 		DontDestroyOnLoad(gameObject);
 	}
 
+	private void Update()
+	{
+		DestroyOldObject();
+	}
+
 	public void PlaySound(string soundName, bool pausable, string soundsPath = "Sounds/")
 	{
 		if (string.IsNullOrEmpty(soundName))
@@ -130,6 +135,7 @@ public class SoundManager : MonoBehaviour, ISoundManager
 		}
 
 		StopMusicInternal();
+		DeleteMusicInternal();
 		StartCoroutine(MusicPlayback(musicName, pausable, musicPath));
 	}
 
@@ -169,6 +175,15 @@ public class SoundManager : MonoBehaviour, ISoundManager
 			currentMusic.Stop();
 	}
 
+	private void DeleteMusicInternal()
+	{
+		if (currentMusic != null)
+		{
+			Destroy(currentMusic.gameObject);
+			currentMusic = null;
+		}
+	}
+
 	public void Pause()
 	{
 		AudioListener.pause = true;
@@ -191,5 +206,36 @@ public class SoundManager : MonoBehaviour, ISoundManager
 	{
 		if (currentMusic != null)
 			currentMusic.volume = MusicVolume;
+	}
+
+	private void DestroyOldObject()
+	{
+		AudioSource soundToDelete = null;
+
+		foreach (AudioSource sound in playableSounds)
+		{
+			if (IsSoundFinished(sound))
+			{
+				soundToDelete = sound;
+				break;
+			}
+		}
+
+		if (soundToDelete != null)
+		{
+			playableSounds.Remove(soundToDelete);
+			Destroy(soundToDelete.gameObject);
+		}
+	}
+
+	private bool IsSoundFinished(AudioSource sound)
+	{
+		if (sound.isPlaying)
+			return false;
+
+		if (!sound.ignoreListenerPause && AudioListener.pause)
+			return false;
+
+		return true;
 	}
 }
