@@ -2,7 +2,6 @@
 
 public class GameController : MonoBehaviour
 {
-	ISoundManager soundManager;
 	ISettingsManager settingsManager;
 	ILocalizationManager localizationManager;
 	IProgressManager progressManager;
@@ -19,5 +18,10 @@ public class GameController : MonoBehaviour
 
 		settingsManager.ChangeSetting(Auxiliary.SettingsKey.musicKey, 60);
 		settingsManager.ChangeSetting(Auxiliary.SettingsKey.soundKey, 90);
+
+		SoundManager.Instance.SoundVolume = settingsManager.SettingsValue.soundVolume;
+		SoundManager.Instance.MusicVolume = settingsManager.SettingsValue.musicVolume;
+		SoundManager.Instance.PlaySound("1");
+		SoundManager.Instance.PlayMusic("sound");
 	}
 }
